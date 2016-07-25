@@ -13,6 +13,7 @@ namespace CachetHQ\Cachet\Models;
 
 use AltThree\Validator\ValidatingTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * This is the timed action model.
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TimedAction extends Model
 {
-    use ValidatingTrait;
+    use SoftDeletes, ValidatingTrait;
 
     /**
      * The attributes that should be casted to native types.
@@ -53,6 +54,7 @@ class TimedAction extends Model
         'completion_latency',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     /**
