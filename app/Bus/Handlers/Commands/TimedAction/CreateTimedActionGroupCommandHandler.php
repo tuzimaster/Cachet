@@ -11,7 +11,6 @@
 
 namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
-use CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionGroupCommand;
 use CachetHQ\Cachet\Models\TimedActionGroup;
 
 /**
