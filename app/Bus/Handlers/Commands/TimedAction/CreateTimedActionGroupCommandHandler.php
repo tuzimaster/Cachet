@@ -11,6 +11,7 @@
 
 namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
+use CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionGroupCommand;
 use CachetHQ\Cachet\Models\TimedActionGroup;
 
 /**
@@ -27,7 +28,7 @@ class CreateTimedActionGroupCommandHandler
      *
      * @return \CachetHQ\Cachet\Models\TimedActionGroup
      */
-    public function handle(AddComponentCommand $command)
+    public function handle(CreateTimedActionGroupCommand $command)
     {
         return TimedActionGroup::create([
             'name'  => $command->name,
