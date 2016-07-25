@@ -40,8 +40,8 @@ class ConfigServiceProvider extends ServiceProvider
         $cache = $this->app->make(Cache::class);
         $loaded = $cli ? false : $cache->load($env);
 
-        $this->app->terminating(function () use ($repo, $cache) {
-            if ($repo->stale()) {
+        $this->app->terminating(function () use ($cli, $repo, $cache) {
+            if ($cli || $repo->stale()) {
                 $cache->clear();
             }
         });
