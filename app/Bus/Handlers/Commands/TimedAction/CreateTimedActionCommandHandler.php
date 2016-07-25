@@ -11,6 +11,8 @@
 
 namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
+use CachetHQ\Cachet\Models\TimedAction;
+
 /**
  * This is the create timed action command handler.
  *
@@ -19,14 +21,26 @@ namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 class CreateTimedActionCommandHandler
 {
     /**
-     * Handle the add component command.
+     * Handle the add timed action command.
      *
      * @param \CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionCommand $command
      *
-     * @return void
+     * @return \CachetHQ\Cachet\Models\TimedAction
      */
     public function handle(AddComponentCommand $command)
     {
-        //
+        $timedAction = TimedAction::create([
+            'name'               => $command->name,
+            'description'        => $command->description,
+            'active'             => $command->active,
+            'timezone'           => $command->timezone,
+            'schedule_frequency' => $command->schedule_frequency,
+            'completion_latency' => $command->completion_latency,
+            'group'              => $command->group,
+        ]);
+
+        // TODO: Fire an event.
+
+        return $timedAction;
     }
 }
