@@ -25,6 +25,9 @@ class CreatedTimedActionsInstancesTable extends Migration
         Schema::create('timed_action_instances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('timed_action_id')->unsigned();
+            $table->text('message')->nullable()->default(null);
+            $table->timestamp('started_at');
+            $table->timestamp('completed_at');
             $table->timestamps();
         });
     }

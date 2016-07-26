@@ -30,6 +30,9 @@ class TimedActionInstance extends Model
      */
     protected $casts = [
         'timed_action_id' => 'int',
+        'message'         => 'string',
+        'started_at'      => 'date',
+        'completed_at'    => 'date',
     ];
 
     /**
@@ -39,6 +42,9 @@ class TimedActionInstance extends Model
      */
     protected $fillable = [
         'timed_action_id',
+        'message',
+        'started_at',
+        'completed_at',
         'created_at',
         'updated_at',
     ];
@@ -50,6 +56,8 @@ class TimedActionInstance extends Model
      */
     public $rules = [
         'timed_action_id' => 'required|int',
+        'started_at'      => 'required|date',
+        'completed_at'    => 'required|date',
     ];
 
     /**

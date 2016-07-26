@@ -108,20 +108,69 @@ class ActionController extends AbstractApiController
      */
     public function postActionInstance(TimedAction $action)
     {
-        //
+        try {
+            $action = dispatch(new CreateTimedActionInstanceCommand(
+                $action,
+                Binput::get('message', null),
+                Binput::get('started_at'),
+                Binput::get('completed_at', null)
+            ));
+        } catch (QueryException $e) {
+            throw new BadRequestHttpException($e);
+        }
+
+        return $this->item($action);
     }
 
     /**
      * Update a timed action.
+     *
+     * @param \CachetHQ\Cachet\Models\TimedAction $action
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function putAction(TimedAction $action)
+    {
+        try {
+            $action = dispatch(new UpdateTimedActionCommand(
+                $action,
+                Binput::get('name'),
+                Binput::get('description', null),
+                Binput::get('active', false),
+                Binput::get('timezone', null),
+                Binput::get('schedule_frequency'),
+                Binput::get('completion_latency'),
+                Binput::get('start_at')
+            ));
+        } catch (QueryException $e) {
+            throw new BadRequestHttpException($e);
+        }
+
+        return $this->item($action);
+    }
+
+    /**
+     * Update a timed action instance.
      *
      * @param \CachetHQ\Cachet\Models\TimedAction         $action
      * @param \CachetHQ\Cachet\Models\TimedActionInstance $instance
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function putAction(TimedAction $action, TimedActionInstance $instance)
+    public function putInstance(TimedAction $action, TimedActionInstance $instance)
     {
-        //
+        try {
+            $instance = dispatch(new UpdateTimedActionInstanceCommand(
+                $instance,
+                Binput::get('message', null),
+                Binput::get('started_at'),
+                Binput::get('completed_at', null)
+            ));
+        } catch (QueryException $e) {
+            throw new BadRequestHttpException($e);
+        }
+
+        return $this->item($instance);
     }
 
     /**
