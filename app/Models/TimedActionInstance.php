@@ -13,13 +13,14 @@ namespace CachetHQ\Cachet\Models;
 
 use AltThree\Validator\ValidatingTrait;
 use Illuminate\Database\Eloquent\Model;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
 /**
  * This is the timed action instance model.
  *
  * @author James Brooks <james@alt-three.com>
  */
-class TimedActionInstance extends Model
+class TimedActionInstance extends Model implements HasPresenter
 {
     use ValidatingTrait;
 
@@ -61,12 +62,22 @@ class TimedActionInstance extends Model
     ];
 
     /**
-     * Get the timed action relation.
+     * Get the action relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function timed_action()
+    public function action()
     {
         return $this->belongsTo(TimedAction::class);
+    }
+
+    /**
+     * Get the presenter class.
+     *
+     * @return string
+     */
+    public function getPresenterClass()
+    {
+        return TimedActionInstance::class;
     }
 }

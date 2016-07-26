@@ -17,6 +17,11 @@ use DateInterval;
 use Illuminate\Contracts\Support\Arrayable;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
+/**
+ * This is the timed action presenter class.
+ *
+ * @author James Brooks <james@alt-three.com>
+ */
 class TimedActionPresenter extends BasePresenter implements Arrayable
 {
     use TimestampsTrait;

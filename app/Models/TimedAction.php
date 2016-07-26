@@ -115,13 +115,22 @@ class TimedAction extends Model implements HasPresenter
     ];
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var string[]
+     */
+    protected $with = [
+        'instances',
+    ];
+
+    /**
      * Get the instances relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function instances()
     {
-        return $this->hasMany(TimedActionInstance::class);
+        return $this->hasMany(TimedActionInstance::class, 'timed_action_id', 'id');
     }
 
     /**
