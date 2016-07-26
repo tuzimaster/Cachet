@@ -35,6 +35,16 @@ class TimedActionPresenter extends BasePresenter implements Arrayable
     }
 
     /**
+     * Get the group name.
+     *
+     * @return string|null
+     */
+    public function group_name()
+    {
+        return $this->wrappedObject->group->name ?? null;
+    }
+
+    /**
      * Convert the presenter instance to an array.
      *
      * @return string[]
@@ -42,6 +52,7 @@ class TimedActionPresenter extends BasePresenter implements Arrayable
     public function toArray()
     {
         return array_merge($this->wrappedObject->toArray(), [
+            'group_name'         => $this->group_name(),
             'next_schedule_time' => $this->next_schedule_time(),
             'created_at'         => $this->created_at(),
             'updated_at'         => $this->updated_at(),

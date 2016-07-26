@@ -131,7 +131,7 @@ class TimedAction extends Model implements HasPresenter
      */
     public function group()
     {
-        return $this->belongsTo(TimedActionGroup::class);
+        return $this->belongsTo(TimedActionGroup::class, 'timed_action_group_id', 'id');
     }
 
     /**
