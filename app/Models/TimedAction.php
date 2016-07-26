@@ -75,13 +75,13 @@ class TimedAction extends Model implements HasPresenter
     ];
 
     /**
-     * Get the responses relation.
+     * Get the instances relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function responses()
+    public function instances()
     {
-        return $this->hasMany(TimedActionResponse::class);
+        return $this->hasMany(TimedActionInstance::class);
     }
 
     /**

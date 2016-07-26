@@ -13,7 +13,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatedTimedActionsResponsesTable extends Migration
+class CreatedTimedActionsInstancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreatedTimedActionsResponsesTable extends Migration
      */
     public function up()
     {
-        Schema::create('timed_action_responses', function (Blueprint $table) {
+        Schema::create('timed_action_instances', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('timed_action_id')->unsigned();
             $table->timestamps();
@@ -36,6 +36,6 @@ class CreatedTimedActionsResponsesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('timed_action_responses');
+        Schema::drop('timed_action_instances');
     }
 }

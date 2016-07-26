@@ -15,11 +15,11 @@ use AltThree\Validator\ValidatingTrait;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * This is the timed action response model.
+ * This is the timed action instance model.
  *
  * @author James Brooks <james@alt-three.com>
  */
-class TimedActionResponse extends Model
+class TimedActionInstance extends Model
 {
     use ValidatingTrait;
 
