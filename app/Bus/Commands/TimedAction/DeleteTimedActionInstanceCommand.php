@@ -11,31 +11,31 @@
 
 namespace CachetHQ\Cachet\Bus\Commands\TimedAction;
 
-use CachetHQ\Cachet\Models\TimedAction;
+use CachetHQ\Cachet\Models\TimedActionInstance;
 
 /**
  * This is the delete timed action command class.
  *
  * @author James Brooks <james@alt-three.com>
  */
-final class DeleteTimedActionCommand
+final class DeleteTimedActionInstanceCommand
 {
     /**
-     * The timed action to delete.
+     * The timed action instance to delete.
      *
-     * @var \CachetHQ\Cachet\Models\TimedAction
+     * @var \CachetHQ\Cachet\Models\TimedActionInstance
      */
-    public $action;
+    public $instance;
 
     /**
-     * Create a new delete timed action command instance.
+     * Create a new delete timed action instance command instance.
      *
-     * @param \CachetHQ\Cachet\Models\TimedAction $action
+     * @param \CachetHQ\Cachet\Models\TimedActionInstance $instance
      *
      * @return void
      */
-    public function __construct(TimedAction $action)
+    public function __construct(TimedActionInstance $instance)
     {
-        $this->action = $action;
+        $this->instance = $instance;
     }
 }

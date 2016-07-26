@@ -13,7 +13,9 @@ namespace CachetHQ\Cachet\Http\Controllers\Api;
 
 use CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionCommand;
 use CachetHQ\Cachet\Bus\Commands\TimedAction\DeleteTimedActionCommand;
+use CachetHQ\Cachet\Bus\Commands\TimedAction\DeleteTimedActionInstanceCommand;
 use CachetHQ\Cachet\Models\TimedAction;
+use CachetHQ\Cachet\Models\TimedActionInstance;
 use GrahamCampbell\Binput\Facades\Binput;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Request;
@@ -33,7 +35,7 @@ class ActionController extends AbstractApiController
      */
     public function getActions()
     {
-        $actions = TimedAction::query();
+        $actions = TimedAction::active();
 
         $actions->search(Binput::except(['sort', 'order', 'per_page']));
 
@@ -61,6 +63,19 @@ class ActionController extends AbstractApiController
     }
 
     /**
+     * Get a single timed action instance.
+     *
+     * @param \CachetHQ\Cachet\Models\TimedAction         $action
+     * @param \CachetHQ\Cachet\Models\TimedActionInstance $instance
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getActionInstance(TimedAction $action, TimedActionInstance $instance)
+    {
+        return $this->item($instance);
+    }
+
+    /**
      * Create a new timed action instance.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -85,13 +100,13 @@ class ActionController extends AbstractApiController
     }
 
     /**
-     * Create a timed action response instance.
+     * Create a timed action instance.
      *
      * @param \CachetHQ\Cachet\Models\TimedAction $action
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postActionResponse(TimedAction $action)
+    public function postActionInstance(TimedAction $action)
     {
         //
     }
@@ -99,11 +114,12 @@ class ActionController extends AbstractApiController
     /**
      * Update a timed action.
      *
-     * @param \CachetHQ\Cachet\Models\TimedAction $action
+     * @param \CachetHQ\Cachet\Models\TimedAction         $action
+     * @param \CachetHQ\Cachet\Models\TimedActionInstance $instance
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function putAction(TimedAction $action)
+    public function putAction(TimedAction $action, TimedActionInstance $instance)
     {
         //
     }
@@ -118,6 +134,21 @@ class ActionController extends AbstractApiController
     public function deleteAction(TimedAction $action)
     {
         dispatch(new DeleteTimedActionCommand($action));
+
+        return $this->noContent();
+    }
+
+    /**
+     * Delete a timed action instance.
+     *
+     * @param \CachetHQ\Cachet\Models\TimedAction         $action
+     * @param \CachetHQ\Cachet\Models\TimedActionInstance $instance
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteInstance(TimedAction $action, TimedActionInstance $instance)
+    {
+        dispatch(new DeleteTimedActionInstanceCommand($instance));
 
         return $this->noContent();
     }
