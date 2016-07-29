@@ -1,17 +1,9 @@
 <?php
 
-/*
- * This file is part of Cachet.
- *
- * (c) Alt Three Services Limited
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
+namespace Bus\Handlers\Commands\TimedAction;
 
 use CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionCommand;
+use CachetHQ\Cachet\Bus\Events\TimedAction\TimedActionWasAddedEvent;
 use CachetHQ\Cachet\Models\TimedAction;
 
 /**
@@ -40,7 +32,7 @@ class CreateTimedActionCommandHandler
             'group'              => $command->group,
         ]);
 
-        // TODO: Fire an event.
+        event(new TimedActionWasAddedEvent($timedAction));
 
         return $timedAction;
     }
