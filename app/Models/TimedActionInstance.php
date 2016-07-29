@@ -78,6 +78,6 @@ class TimedActionInstance extends Model implements HasPresenter
      */
     public function getPresenterClass()
     {
-        return TimedActionInstance::class;
+        return self::class;
     }
 }
