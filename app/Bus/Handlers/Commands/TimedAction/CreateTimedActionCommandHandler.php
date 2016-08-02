@@ -23,7 +23,7 @@ use CachetHQ\Cachet\Models\TimedAction;
 class CreateTimedActionCommandHandler
 {
     /**
-     * Handle the add timed action command.
+     * Handle the create timed action command.
      *
      * @param \CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionCommand $command
      *
