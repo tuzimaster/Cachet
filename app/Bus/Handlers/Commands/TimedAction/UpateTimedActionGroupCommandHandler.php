@@ -9,16 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace CachetHQ\Cachet\Bus\Commands\TimedAction;
-
-use CachetHQ\Cachet\Bus\Commands\TimedAction\UpdateTimedActionGroupCommand;
+namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
 /**
  * This is the update timed group command handler class.
  *
  * @author James Brooks <james@alt-three.com>
  */
-class UpdateTimedActionCommandGroupHandler
+class UpateTimedActionGroupCommandHandler
 {
     /**
      * Handle the update timed group command.

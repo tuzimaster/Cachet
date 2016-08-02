@@ -9,9 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace CachetHQ\Cachet\Bus\Commands\TimedAction;
-
-use CachetHQ\Cachet\Bus\Commands\TimedAction\UpdateTimedActionCommand;
+namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
 /**
  * This is the update timed action command handler class.

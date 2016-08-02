@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Bus\Handlers\Commands\TimedAction;
+namespace CachetHQ\Cachet\Bus\Handlers\Commands\TimedAction;
 
 use CachetHQ\Cachet\Bus\Commands\TimedAction\CreateTimedActionCommand;
 use CachetHQ\Cachet\Bus\Events\TimedAction\TimedActionWasAddedEvent;
