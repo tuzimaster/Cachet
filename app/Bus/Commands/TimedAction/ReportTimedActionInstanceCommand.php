@@ -35,13 +35,30 @@ final class ReportTimedActionInstanceCommand
     public $message;
 
     /**
+     * The started at time.
+     *
+     * @var string
+     */
+    public $started_at;
+
+    /**
+     * The completed at time.
+     *
+     * @var string
+     */
+    public $completed_at;
+
+    /**
      * Create a new report timed action instance command.
      *
      * @param \CachetHQ\Cachet\Models\TimedAction $action
+     * @param string|null                         $message
+     * @param string                              $started_at
+     * @param string                              $completed_at
      *
      * @return void
      */
-    public function __construct(TimedAction $action)
+    public function __construct(TimedAction $action, $message, $started_at, $completed_at)
     {
         $this->action = $action;
     }
