@@ -62,6 +62,21 @@ class ActionController extends AbstractApiController
         return $this->item($action);
     }
 
+    public function getActionInstances(TimedAction $action)
+    {
+        $instances = $action->instances();
+
+        if ($sortBy = Binput::get('sort')) {
+            $direction = Binput::has('order') && Binput::get('order') == 'desc';
+
+            $instances->sort($sortBy, $direction);
+        }
+
+        $instances = $instances->paginate(Binput::get('per_page', 20));
+
+        return $this->paginator($instances, Request::instance());
+    }
+
     /**
      * Get a single timed action instance.
      *

@@ -12,6 +12,7 @@
 namespace CachetHQ\Cachet\Models;
 
 use AltThree\Validator\ValidatingTrait;
+use CachetHQ\Cachet\Models\Traits\SortableTrait;
 use Illuminate\Database\Eloquent\Model;
 use McCool\LaravelAutoPresenter\HasPresenter;
 
@@ -22,7 +23,7 @@ use McCool\LaravelAutoPresenter\HasPresenter;
  */
 class TimedActionInstance extends Model implements HasPresenter
 {
-    use ValidatingTrait;
+    use SortableTrait, ValidatingTrait;
 
     /**
      * The attributes that should be casted to native types.
@@ -59,6 +60,18 @@ class TimedActionInstance extends Model implements HasPresenter
         'timed_action_id' => 'required|int',
         'started_at'      => 'required|date',
         'completed_at'    => 'required|date',
+    ];
+
+    /**
+     * The sortable fields.
+     *
+     * @var string[]
+     */
+    protected $sortable = [
+        'id',
+        'timed_action_id',
+        'created_at',
+        'updated_at',
     ];
 
     /**
